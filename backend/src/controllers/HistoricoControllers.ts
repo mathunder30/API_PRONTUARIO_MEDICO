@@ -13,10 +13,8 @@ export const criandoHistorico = async(req: Request, res: Response) => {
         res.status(201).json({message: 'Historico cadastrado com sucesso', historico: NovoHistorico});
 
     } catch (error) {
-        console.error(`Erro ao cadstrar o historico: ${error}`);
-        res.status(500).json({message: `Erro ao cadastrar o Historico ${error}`});
-
-
+        console.error(`Erro ao cadstrar o historico ${error}`);
+        res.status(500).json({message: `Erro ao cadastrar o historico ${error}`});
 
     }
 }
