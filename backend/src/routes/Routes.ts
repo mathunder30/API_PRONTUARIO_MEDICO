@@ -1,5 +1,5 @@
 import  Express  from "express";
-import { paginaFormulario, paginaHistorico, paginaMedicacao, paginaObservacao } from "../controllers/PagPrincipalControllers";
+import { paginaFormulario, paginaHistorico, paginaMedicacao, paginaObservacao, paginaVisualizacao } from "../controllers/PagPrincipalControllers";
 import { criandoPaciente } from "../controllers/PacienteControllers";
 import { criandoHistorico } from "../controllers/HistoricoControllers";
 import { criandoMedicacao } from "../controllers/MedicacaoControllers";
@@ -18,5 +18,6 @@ router.get('/info_pessoais_paciente', paginaFormulario);
 router.get('/hist_medico', paginaHistorico);
 router.get('/medicacao', paginaMedicacao);
 router.get('/obs_med', paginaObservacao);
+router.get('/pagina_visualizacao', paginaVisualizacao);
 
 export default router;

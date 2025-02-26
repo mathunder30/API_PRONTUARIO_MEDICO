@@ -41,9 +41,14 @@ app.get('/medicacao', (req: Request, res: Response) => {
     res.render('medicacao'); 
   });
 
-  app.get('/obs_med', (req: Request, res: Response) => {
+app.get('/obs_med', (req: Request, res: Response) => {
     console.log('Acessando a rota do formulário');
     res.render('obs_med'); 
+  });
+
+app.get('/pagina_visualizacao', (req: Request, res: Response) => {
+    console.log('Acessando a rota do formulário');
+    res.render('pagina_visualizacao'); 
   });
   
 

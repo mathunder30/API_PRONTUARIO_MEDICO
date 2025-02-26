@@ -19,3 +19,8 @@ export const paginaObservacao = (req: Request, res: Response) => {
     console.log("rota /obs_med acessada");
     res.render('obs_med')
 }
+
+export const paginaVisualizacao = (req: Request, res: Response) => {
+    console.log("rota /pagina_visualizacao acessada");
+    res.render('pagina_visualizacao')
+}
