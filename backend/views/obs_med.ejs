@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Observações Médicas</title>
-    <link rel="stylesheet" href="obs_med.css">
+    <link rel="stylesheet" href="/css/obs_med.css">
 </head>
 <body>
     <section>
-        <div><form action="/submit" method="post" id="editarFormulario">
+        <div><form action="/api/paciente/criar_observacao"" method="post" id="editarFormulario">
             <h2>Observações Médicas</h2>
   
             <label for="observacoes">Outras Recomendações:</label>
-            <textarea id="observacoes" name="observacoes" rows="4" cols="50"></textarea><br><br> 
+            <textarea id="observacoes_medicas" name="observacoes_medicas" rows="4" cols="50"></textarea><br><br> 
             <input type="submit" value="Salvar Alteraçoes">
 
         </form>

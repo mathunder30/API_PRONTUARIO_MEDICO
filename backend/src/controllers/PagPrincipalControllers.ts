@@ -14,3 +14,8 @@ export const paginaMedicacao = (req: Request, res: Response) => {
     console.log("rota /medicacao acessada");
     res.render('medicacao')
 }
+
+export const paginaObservacao = (req: Request, res: Response) => {
+    console.log("rota /obs_med acessada");
+    res.render('obs_med')
+}
