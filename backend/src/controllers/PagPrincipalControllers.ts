@@ -9,3 +9,8 @@ export const paginaHistorico = (req: Request, res: Response) => {
     console.log("rota /hist_medico acessada");
     res.render('hist_medico')
 }
+
+export const paginaMedicacao = (req: Request, res: Response) => {
+    console.log("rota /medicacao acessada");
+    res.render('medicacao')
+}

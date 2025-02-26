@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicamentos</title>
-    <link rel="stylesheet" href="medicacao.css">
+    <link rel="stylesheet" href="/css/medicacao.css">
 
 </head>
 <body>
     <section class="container">
         <div>
             <h2>Medicações</h2>
-            <form id="editarFormulario">
+            <form action="/api/paciente/criar_medicamento" method="POST" class="form">
                 <label for="medicamentos">Medicamentos Prescritos:</label>
                 <textarea id="medicamentos" name="medicamentos" rows="4" cols="50"></textarea><br><br>
                 
