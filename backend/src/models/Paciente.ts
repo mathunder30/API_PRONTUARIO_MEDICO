@@ -2,7 +2,7 @@ import { promisePool } from "../BancoDados";
 import msql2 from 'mysql2';
 
 interface IPaciente {
-    id?: number,
+    id?: number;
     nome_paciente: string;
     data_paciente: string;
     idade_paciente: number;

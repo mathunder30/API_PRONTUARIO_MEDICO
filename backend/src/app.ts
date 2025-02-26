@@ -30,6 +30,11 @@ app.get('/info_pessoais_paciente', (req: Request, res: Response) => {
     console.log('Acessando a rota do formulário');
     res.render('info_pessoais_paciente'); 
   });
+
+  app.get('/hist_medico', (req: Request, res: Response) => {
+    console.log('Acessando a rota do formulário');
+    res.render('hist_medico'); 
+  });
   
 
 app.listen(port, () =>{
