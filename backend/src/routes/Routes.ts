@@ -1,23 +1,23 @@
 import  Express  from "express";
-import { paginaFormulario, paginaHistorico, paginaMedicacao, paginaObservacao, paginaVisualizacao } from "../controllers/PagPrincipalControllers";
-import { criandoPaciente } from "../controllers/PacienteControllers";
-import { criandoHistorico } from "../controllers/HistoricoControllers";
-import { criandoMedicacao } from "../controllers/MedicacaoControllers";
-import { criandoObservacoes } from "../controllers/ObservacoesControllers";
+import { GetpaginaFormulario, GetpaginaHistorico, GetpaginaMedicacao, GetpaginaObservacao, GetpaginaVisualizacao } from "../controllers/PagPrincipalControllers";
+import { PostCriandoPaciente } from "../controllers/PacienteControllers";
+import { PostcriandoHistorico } from "../controllers/HistoricoControllers";
+import { PostcriandoMedicacao } from "../controllers/MedicacaoControllers";
+import { PostcriandoObservacoes } from "../controllers/ObservacoesControllers";
 const router = Express.Router();
 
-router.post('/criar_paciente', criandoPaciente);
-router.post('/criar_historico', criandoHistorico);
-router.post ('/criar_medicamento', criandoMedicacao);
-router.post ('/criar_observacao', criandoObservacoes);
+router.post('/criar_paciente', PostCriandoPaciente);
+router.post('/criar_historico', PostcriandoHistorico);
+router.post ('/criar_medicamento', PostcriandoMedicacao);
+router.post ('/criar_observacao', PostcriandoObservacoes);
 
 
 
 // rotas das paginas dos formularios
-router.get('/info_pessoais_paciente', paginaFormulario);
-router.get('/hist_medico', paginaHistorico);
-router.get('/medicacao', paginaMedicacao);
-router.get('/obs_med', paginaObservacao);
-router.get('/pagina_visualizacao', paginaVisualizacao);
+router.get('/info_pessoais_paciente', GetpaginaFormulario);
+router.get('/hist_medico', GetpaginaHistorico);
+router.get('/medicacao', GetpaginaMedicacao);
+router.get('/obs_med', GetpaginaObservacao);
+router.get('/pagina_visualizacao', GetpaginaVisualizacao);
 
 export default router;

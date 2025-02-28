@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Observacoes from "../models/Observacoes";
 
 
-export const criandoObservacoes = async(req: Request, res: Response) => {
+export const PostcriandoObservacoes = async(req: Request, res: Response) => {
     const{observacoes_medicas} = req.body;
     console.log("Recebendo dados do formulário:", req.body);
     console.log('Dados recebidos:', {observacoes_medicas});

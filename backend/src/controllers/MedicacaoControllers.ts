@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Medicacao from "../models/Medicacao";
 
-export const criandoMedicacao = async(req: Request, res: Response) => {
+export const PostcriandoMedicacao = async(req: Request, res: Response) => {
     const{medicamentos, instrucoes} = req.body;
     console.log("Recebendo dados do formulário:", req.body);
     console.log('Dados recebidos:', {medicamentos, instrucoes});
