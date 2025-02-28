@@ -25,5 +25,13 @@ export default class Paciente {
             [paciente.nome_paciente, paciente.data_paciente, paciente.idade_paciente, paciente.genero_paciente, paciente.cpf_paciente, paciente.telefone_paciente, paciente.endereco_paciente]
         ); console.log('Usuário inserido: ', rows);
         return {...paciente, id:(rows as msql2.ResultSetHeader).insertId}        
-    }
+    };
+
+    static async BuscandoTodosPaciente(): Promise<IPaciente[]>{
+        const [rows] = await promisePool.execute('SELECT * FROM paciente');
+        return rows as IPaciente[];
+    };
+
+
 }
+

@@ -16,3 +16,14 @@ export const PostCriandoPaciente = async(req: Request, res: Response) => {
         res.status(500).json({message: `Erro ao cadastrar o paciente ${error}`});
     }
 };
+
+
+export const GetPaciente = async (req: Request, res: Response) =>{
+
+    try {
+        const Pacientes = await Paciente.BuscandoTodosPaciente();
+        res.json(Pacientes);
+    } catch (error){
+        res.status(500).json({ message: `Erro ao buscar o Paciente ${error}`})
+    }
+};
