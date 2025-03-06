@@ -16,9 +16,7 @@ export const PostCriandoPaciente = async(req: Request, res: Response) => {
         res.status(500).json({message: `Erro ao cadastrar o paciente ${error}`});
     }
 
-    
 };
-
 
 export const GetPaciente = async (req: Request, res: Response) =>{
 
@@ -49,9 +47,6 @@ export const GetPacienteByID = async (req: Request, res: Response) =>{
 export const SetPacienteByID = async (req: Request, res: Response) =>{
     const id = parseInt(req.params.id);
     const {nome_paciente, data_paciente, idade_paciente, genero_paciente, cpf_paciente, telefone_paciente, endereco_paciente } = req.body;
-
-   
-
   
     try {
 
@@ -65,5 +60,16 @@ export const SetPacienteByID = async (req: Request, res: Response) =>{
     } catch(error){
         console.error("Erro ao atualizar paciente:", error);
         res.status(500).json({ message: 'Erro ao atualizar o paciente: ', error})
+    }
+}
+
+export const DeletePaciente = async(req: Request, res:Response) => {
+    const id = parseInt(req.params.id);
+
+    try{
+        const paciente = await Paciente.deletarPaciente(id);
+        res.status(200).json({message: `Usuario ${paciente} excluido com sucesso!`});
+    } catch (error){
+        res.status(500).json({ message: `Erro ao excluir paciente ${error}`})
     }
 }

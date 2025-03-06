@@ -59,6 +59,10 @@ export default class Paciente {
             paciente.endereco_paciente || null,
             id || null
         ]);
+    };
+
+    static async deletarPaciente (id: number): Promise<void> {
+        await promisePool.execute('DELETE FROM paciente WHERE id = ?', [id]);
     }
 
 

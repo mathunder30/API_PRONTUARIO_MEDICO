@@ -1,6 +1,6 @@
 import  Express  from "express";
 import { GetpaginaFormulario, GetpaginaHistorico, GetpaginaMedicacao, GetpaginaObservacao, GetpaginaVisualizacao } from "../controllers/PagPrincipalControllers";
-import { PostCriandoPaciente, GetPaciente, GetPacienteByID, SetPacienteByID } from "../controllers/PacienteControllers";
+import { PostCriandoPaciente, GetPaciente, GetPacienteByID, SetPacienteByID, DeletePaciente } from "../controllers/PacienteControllers";
 import { PostcriandoHistorico } from "../controllers/HistoricoControllers";
 import { PostcriandoMedicacao } from "../controllers/MedicacaoControllers";
 import { PostcriandoObservacoes } from "../controllers/ObservacoesControllers";
@@ -14,6 +14,7 @@ router.post ('/criar_observacao', PostcriandoObservacoes);
 router.get('/buscando_paciente', GetPaciente);
 router.get('/:id', GetPacienteByID);
 router.put('/atualizar_paciente/:id', SetPacienteByID);
+router.delete('/deletar_paciente/:id', DeletePaciente);
 
 // rotas das paginas dos formularios
 router.get('/info_pessoais_paciente', GetpaginaFormulario);
