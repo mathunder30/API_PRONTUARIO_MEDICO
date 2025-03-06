@@ -1,3 +1,4 @@
+import { promises } from "dns";
 import { promisePool } from "../BancoDados";
 import msql2 from 'mysql2';
 
@@ -31,6 +32,12 @@ export default class Paciente {
         const [rows] = await promisePool.execute('SELECT * FROM paciente');
         return rows as IPaciente[];
     };
+
+    static async BuscandoPacienteID(id: number): Promise<IPaciente | null> {
+        const [rows] = await promisePool.execute('SELECT * FROM paciente WHERE id = ?', [id]);
+        const paciente = (rows as IPaciente[])[0];
+        return paciente || null;
+    }
 
 
 }
