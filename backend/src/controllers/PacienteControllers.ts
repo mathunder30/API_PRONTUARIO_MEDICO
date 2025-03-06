@@ -45,3 +45,25 @@ export const GetPacienteByID = async (req: Request, res: Response) =>{
         res.status(500).json({ message:'Erro ao buscar usuario', error})
     }
 };
+
+export const SetPacienteByID = async (req: Request, res: Response) =>{
+    const id = parseInt(req.params.id);
+    const {nome_paciente, data_paciente, idade_paciente, genero_paciente, cpf_paciente, telefone_paciente, endereco_paciente } = req.body;
+
+   
+
+  
+    try {
+
+        console.log(`Atualizando paciente com ID: ${id}`);
+        console.log("Dados recebidos:", req.body);
+
+
+        const paciente_put = await Paciente.atualizarPaciente(id, {nome_paciente: 'Lena Rita', data_paciente:'1987-05-27', idade_paciente: 48, genero_paciente: 'FEMININO', cpf_paciente: '04243709645', telefone_paciente: '31985221524', endereco_paciente: 'BECO VALADARES, 455 - SÃO GABRIEL'});
+        console.log(`Atualizações do paciente ${paciente_put}`);
+        res.status(200).json({message: 'Paciente atualizado com sucesso!', paciente_put});
+    } catch(error){
+        console.error("Erro ao atualizar paciente:", error);
+        res.status(500).json({ message: 'Erro ao atualizar o paciente: ', error})
+    }
+}

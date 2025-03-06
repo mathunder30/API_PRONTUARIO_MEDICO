@@ -45,6 +45,20 @@ export default class Paciente {
         const paciente = (rows as IPaciente[])[0];
         console.log(`ID paciente: ${paciente}`)
         return paciente || null;
+    };
+
+    static async atualizarPaciente (id: number, paciente: IPaciente): Promise<void>{
+
+        await promisePool.execute('UPDATE paciente SET nome_paciente = ?, data_paciente = ?, idade_paciente = ?, genero_paciente = ?,  cpf_paciente = ?, telefone_paciente = ?, endereco_paciente = ? WHERE id = ?', [
+            paciente.nome_paciente || null,
+            paciente.data_paciente || null,
+            paciente.idade_paciente || null,
+            paciente.genero_paciente || null,
+            paciente.cpf_paciente || null,
+            paciente.telefone_paciente || null,
+            paciente.endereco_paciente || null,
+            id || null
+        ]);
     }
 
 
