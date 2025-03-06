@@ -34,8 +34,15 @@ export default class Paciente {
     };
 
     static async BuscandoPacienteID(id: number): Promise<IPaciente | null> {
+
+        if (!id || isNaN(id)) {
+            console.error("Erro: ID inválido recebido.");
+            return null;
+        }
+        console.log(`Buscando paciente com ID:  ${id}`)
         const [rows] = await promisePool.execute('SELECT * FROM paciente WHERE id = ?', [id]);
         const paciente = (rows as IPaciente[])[0];
+        console.log(`ID paciente: ${paciente}`)
         return paciente || null;
     }
 
