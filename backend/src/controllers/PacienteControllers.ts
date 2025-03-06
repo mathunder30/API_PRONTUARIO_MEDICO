@@ -26,6 +26,7 @@ export const GetPaciente = async (req: Request, res: Response) =>{
         const Pacientes = await Paciente.BuscandoTodosPaciente();
         res.json(Pacientes);
     } catch (error){
+        console.log(`Error ao buscar pacientes: ${error}`)
         res.status(500).json({ message: `Erro ao buscar o Paciente ${error}`})
     }
 };

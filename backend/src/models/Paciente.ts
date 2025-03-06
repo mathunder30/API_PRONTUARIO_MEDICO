@@ -30,6 +30,7 @@ export default class Paciente {
 
     static async BuscandoTodosPaciente(): Promise<IPaciente[]>{
         const [rows] = await promisePool.execute('SELECT * FROM paciente');
+        console.log(`Paciente encontrados: ${rows} `)
         return rows as IPaciente[];
     };
 
