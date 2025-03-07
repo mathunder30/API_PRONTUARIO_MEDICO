@@ -8,7 +8,7 @@ export const PostcriandoMedicacao = async(req: Request, res: Response) => {
 
     try{
 
-        const NovoHistorico = await Medicacao.criandoMedicacao({ paciente_id, medicamentos:'roacutan', instrucoes:'tomar sempre com barriga cheia', dosagem: '2 pilulas por dia', frequencia:'todos os dias' });
+        const NovoHistorico = await Medicacao.criandoMedicacao({ paciente_id, medicamentos:'dipirona', instrucoes:'tomar sempre QUE ESTIVER COM DOR DE CABEÇA', dosagem: '2 pilulas por dia', frequencia:'todos os dias' });
         res.status(201).json({message: 'Medicamentos cadastrado com sucesso', medicacao: NovoHistorico});
 
     } catch (error) {
