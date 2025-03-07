@@ -3,6 +3,7 @@ import msql2 from 'mysql2';
 
 interface IHistorico {
     id?: number;
+    paciente_id: number,
     motivo_consulta: string;
     diagnostico: string;
     sintomas: string;
@@ -17,8 +18,8 @@ export default class Historico{
         }
         const [rows] = await promisePool.execute(
             
-            'INSERT INTO historico_medico ( motivo_consulta, diagnostico, sintomas) VALUES (?, ?, ?)',
-            [ historico.motivo_consulta, historico.diagnostico, historico.sintomas]
+            'INSERT INTO historico_medico ( paciente_id, motivo_consulta, diagnostico, sintomas) VALUES (?, ?, ?, ?)',
+            [historico.paciente_id, historico.motivo_consulta, historico.diagnostico, historico.sintomas]
         ); console.log(' ✅ Historico medico inserido: ', rows);
         return {...historico, id:(rows as msql2.ResultSetHeader).insertId}
     }
