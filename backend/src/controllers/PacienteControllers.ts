@@ -7,7 +7,7 @@ export const PostCriandoPaciente = async(req: Request, res: Response) => {
 
     try{
 
-        const NovoPaciente = await Paciente.criandoPaciente({nome_paciente: 'Mateus Lopes', data_paciente: '2002-02-02', idade_paciente: 20, genero_paciente: 'Masculino', cpf_paciente: '01915043603', telefone_paciente:'31995860596', endereco_paciente:'Beco Valadares, 455 - São Gabriel'});
+        const NovoPaciente = await Paciente.criandoPaciente({nome_paciente: 'Mateus Lopes', data_paciente: '2002-02-02', idade_paciente: 20, genero_paciente: 'Masculino', cpf_paciente: '0000000000', telefone_paciente:'31999999999', endereco_paciente:'Av. São Paulo, 455 - Centro'});
         res.status(201).json({message: 'Paciente criado com sucesso!', paciente: NovoPaciente});
         console.log('Dados recebidos:', NovoPaciente );
 
@@ -54,7 +54,7 @@ export const SetPacienteByID = async (req: Request, res: Response) =>{
         console.log("Dados recebidos:", req.body);
 
 
-        const paciente_put = await Paciente.atualizarPaciente(id, {nome_paciente: 'Lena Rita', data_paciente:'1987-05-27', idade_paciente: 48, genero_paciente: 'FEMININO', cpf_paciente: '04243709645', telefone_paciente: '31985221524', endereco_paciente: 'BECO VALADARES, 455 - SÃO GABRIEL'});
+        const paciente_put = await Paciente.atualizarPaciente(id, {nome_paciente: 'Lena Rita', data_paciente:'1987-05-27', idade_paciente: 48, genero_paciente: 'FEMININO', cpf_paciente: '00000000000', telefone_paciente: '31999999999', endereco_paciente: 'Av. São Paulo, 858 - Centro'});
         console.log(`Atualizações do paciente ${paciente_put}`);
         res.status(200).json({message: 'Paciente atualizado com sucesso!', paciente_put});
     } catch(error){
@@ -65,10 +65,11 @@ export const SetPacienteByID = async (req: Request, res: Response) =>{
 
 export const DeletePaciente = async(req: Request, res:Response) => {
     const id = parseInt(req.params.id);
+    const { nome_paciente} = req.body;
 
     try{
         const paciente = await Paciente.deletarPaciente(id);
-        res.status(200).json({message: `Usuario ${paciente} excluido com sucesso!`});
+        res.status(200).json({message: `Usuario ${req.body} excluido com sucesso!`});
     } catch (error){
         res.status(500).json({ message: `Erro ao excluir paciente ${error}`})
     }
