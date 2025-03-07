@@ -16,26 +16,39 @@ CREATE TABLE IF NOT EXISTS paciente (
     
 CREATE TABLE IF NOT EXISTS historico_medico(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    paciente_id int not null,
 	motivo_consulta varchar(550),
     diagnostico varchar(550),
-    sintomas varchar(550),
-    foreign key (paciente_id) references paciente(id) on delete cascade
+    sintomas varchar(550)
 );
 
 CREATE TABLE IF NOT EXISTS medicacao(
 	id int auto_increment primary key,
-    paciente_id int not null,
+    paciente_id int,
     medicamentos varchar(255),
     instrucoes varchar(255),
+    dosagem varchar(50),
+    frequencia varchar(50),
     foreign key (paciente_id) references paciente(id) on delete cascade
+   
 );
 
 CREATE TABLE IF NOT EXISTS observacoes (
 	id int auto_increment primary key,
-    paciente_id int not null,
+    paciente_id int,
     observacoes_medicas varchar(500),
+    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     foreign key (paciente_id) references paciente(id) on delete cascade
-
 );
+
+create table if not exists procedimentos (
+	id int auto_increment primary key,
+    paciente_id int,
+    nome_procedimento varchar(255) not null,
+    data_procedimento date not null,
+    observacoes_procedimento text,
+	foreign key (paciente_id) references paciente(id) on delete cascade
+);
+
+select * from paciente;
+select * from medicacao;
 
