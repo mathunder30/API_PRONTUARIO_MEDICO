@@ -8,7 +8,7 @@ const router = Express.Router();
 
 router.post('/criar_paciente', PostCriandoPaciente);
 router.post('/criar_historico', PostcriandoHistorico);
-router.post ('/criar_medicamento', PostcriandoMedicacao);
+router.post ('/:id/criar_medicamento', PostcriandoMedicacao);
 router.post ('/criar_observacao', PostcriandoObservacoes);
 
 router.get('/buscando_paciente', GetPaciente);
