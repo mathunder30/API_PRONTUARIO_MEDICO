@@ -5,7 +5,7 @@ interface IObservacoes {
     id?: number;
     paciente_id: number,
     observacoes_medicas: string;
-    data_registro?: string;
+    data_registro: string;
    
 }
 
@@ -20,10 +20,16 @@ export default class Observacoes{
         
         const [rows] = await promisePool.execute(
             'INSERT INTO observacoes ( paciente_id, observacoes_medicas, data_registro) VALUES (?, ?, ?)',
-            [ observacoes.paciente_id, observacoes.data_registro, observacoes.observacoes_medicas]
+            [ observacoes.paciente_id, observacoes.observacoes_medicas, observacoes.data_registro]
         ); 
         
         console.log(' ✅ Observações do paciente inserido: ', rows);
         return {...observacoes, id:(rows as msql2.ResultSetHeader).insertId}
+    }
+
+    static async buscarObservacoesByID (paciente_id: number): Promise<IObservacoes | null> {
+        const [rows] = await promisePool.execute('SELECT * FROM observacoes WHERE paciente_id = ?', [paciente_id]);
+        const observacoes = (rows as IObservacoes[])[0];
+        return observacoes || null;
     }
 }

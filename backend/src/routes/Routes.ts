@@ -3,20 +3,29 @@ import { GetpaginaFormulario, GetpaginaHistorico, GetpaginaMedicacao, GetpaginaO
 import { PostCriandoPaciente, GetPaciente, GetPacienteByID, SetPacienteByID, DeletePaciente } from "../controllers/PacienteControllers";
 import { PostcriandoHistorico } from "../controllers/HistoricoControllers";
 import { PostcriandoMedicacao, GetMedicacaoByID } from "../controllers/MedicacaoControllers";
-import { PostcriandoObservacoes } from "../controllers/ObservacoesControllers";
+import { PostcriandoObservacoes, GetObservacoesByID } from "../controllers/ObservacoesControllers";
 const router = Express.Router();
 
+//Rotas para o Paciente
 router.post('/criar_paciente', PostCriandoPaciente);
-router.post('/criar_historico', PostcriandoHistorico);
-router.post ('/:id/criar_medicamento', PostcriandoMedicacao);
-router.post ('/criar_observacao', PostcriandoObservacoes);
-
 router.get('/buscando_paciente', GetPaciente);
 router.get('/:id', GetPacienteByID);
 router.put('/atualizar_paciente/:id', SetPacienteByID);
 router.delete('/deletar_paciente/:id', DeletePaciente);
 
+// Rotas para o Medicamentos
+router.post ('/:id/criar_medicamento', PostcriandoMedicacao);
 router.get('/:id/buscar_medicamento', GetMedicacaoByID);
+
+// Rotas para Observações
+router.post ('/:id/criar_observacao', PostcriandoObservacoes);
+router.get('/:id/buscar_observacoes', GetObservacoesByID);
+
+//Rotas para Historico Medico
+router.post('/:id/criar_historico', PostcriandoHistorico);
+
+//Rota para Buscar o prontuario todo do paciente
+router.get('/:id/buscar', GetPacienteByID ,GetObservacoesByID, GetMedicacaoByID)
 
 // rotas das paginas dos formularios
 router.get('/info_pessoais_paciente', GetpaginaFormulario);

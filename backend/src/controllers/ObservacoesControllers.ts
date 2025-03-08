@@ -18,4 +18,19 @@ export const PostcriandoObservacoes = async(req: Request, res: Response) => {
         res.status(500).json({message: `Erro ao cadastrar as Observacoes ${error}`});
 
     }
+};
+
+export const GetObservacoesByID = async(req: Request, res: Response) => {
+    const paciente_id = parseInt(req.params.id, 10);
+
+    try {
+        const observacoes = await Observacoes.buscarObservacoesByID(Number(paciente_id));
+        if(observacoes){
+            res.status(200).json({observacoes});
+        } else {
+            res.status(400).json({message: `Observações medicas para o paciente não encontradas!`});
+        }
+    } catch(error){
+        res.status(500).json({message: `Erro ao inserir obsevações medicas para o paciente ${error}`});
+    }
 }

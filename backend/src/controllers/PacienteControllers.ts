@@ -7,7 +7,7 @@ export const PostCriandoPaciente = async(req: Request, res: Response) => {
 
     try{
 
-        const NovoPaciente = await Paciente.criandoPaciente({nome_paciente: 'Mateus Lopes', data_paciente: '2002-02-02', idade_paciente: 20, genero_paciente: 'Masculino', cpf_paciente: '0000000000', telefone_paciente:'31999999999', endereco_paciente:'Av. São Paulo, 455 - Centro'});
+        const NovoPaciente = await Paciente.criandoPaciente({nome_paciente, data_paciente, idade_paciente, genero_paciente, cpf_paciente, telefone_paciente, endereco_paciente});
         res.status(201).json({message: 'Paciente criado com sucesso!', paciente: NovoPaciente});
         console.log('Dados recebidos:', NovoPaciente );
 
