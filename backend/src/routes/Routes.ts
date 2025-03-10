@@ -19,13 +19,13 @@ router.get('/:id/buscar_medicamento', GetMedicacaoByID);
 
 // Rotas para Observações
 router.post ('/:id/criar_observacao', PostcriandoObservacoes);
-router.get('/:id/buscar_observacoes', GetObservacoesByID);
+router.get('/:id/buscar_observacao', GetObservacoesByID);
 
 //Rotas para Historico Medico
 router.post('/:id/criar_historico', PostcriandoHistorico);
 
 //Rota para Buscar o prontuario todo do paciente
-router.get('/:id/buscar', GetPacienteByID ,GetObservacoesByID, GetMedicacaoByID)
+router.get('/:id/buscar',)
 
 // rotas das paginas dos formularios
 router.get('/info_pessoais_paciente', GetpaginaFormulario);

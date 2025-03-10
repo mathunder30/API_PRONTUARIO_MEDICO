@@ -23,4 +23,5 @@ export default class Historico{
         ); console.log(' ✅ Historico medico inserido: ', rows);
         return {...historico, id:(rows as msql2.ResultSetHeader).insertId}
     }
+
 }
