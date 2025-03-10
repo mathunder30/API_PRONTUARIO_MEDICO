@@ -16,9 +16,11 @@ CREATE TABLE IF NOT EXISTS paciente (
     
 CREATE TABLE IF NOT EXISTS historico_medico(
 	id INT AUTO_INCREMENT PRIMARY KEY,
+    paciente_id int,
 	motivo_consulta varchar(550),
     diagnostico varchar(550),
-    sintomas varchar(550)
+    sintomas varchar(550),
+    foreign key (paciente_id) references paciente(id) on delete cascade
 );
 
 CREATE TABLE IF NOT EXISTS medicacao(
@@ -51,4 +53,5 @@ create table if not exists procedimentos (
 
 select * from paciente;
 select * from medicacao;
+select * from observacoes;
 
