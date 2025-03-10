@@ -6,8 +6,21 @@ export const BuscarTodosByID = async (req: Request, res: Response) => {
     const paciente_id = (req.params.id, 10);
 
     try{
-        const paciente = await Observacoes.buscarObservacoesByID(Number(paciente_id));
+        const observacoes = await Observacoes.buscarObservacoesByID(Number(paciente_id));
         const medicamento = await Medicacao.buscarMedicacaoID(Number(paciente_id));
-        const historico = await Historico.
-    }catch(error){}
+        const historico = await Historico.buscarHistoricoByID(Number(paciente_id));
+
+        if(observacoes || medicamento || historico){
+            res.status(200).json({observacoes});
+            res.status(200).json({medicamento});
+            res.status(200).json({historico});
+
+
+        } else{
+            
+            res.status(400).json({message: `Nenhum foi encontrado`});
+        }
+    }catch(error){
+        res.status(500).json({message: `Erro ao inserir obsevações medicas para o paciente ${error}`});
+    }
 }

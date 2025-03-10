@@ -24,4 +24,9 @@ export default class Historico{
         return {...historico, id:(rows as msql2.ResultSetHeader).insertId}
     }
 
+    static async buscarHistoricoByID (paciente_id: Number): Promise<IHistorico | null> {
+        const [rows] = await promisePool.execute('SELECT * FROM historico_medico WHERE paciente_id = ?', [paciente_id]);
+        const historico = (rows as IHistorico[])[0];
+        return historico || null;
+    }
 }

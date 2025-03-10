@@ -1,9 +1,10 @@
 import  Express  from "express";
 import { GetpaginaFormulario, GetpaginaHistorico, GetpaginaMedicacao, GetpaginaObservacao, GetpaginaVisualizacao } from "../controllers/PagPrincipalControllers";
 import { PostCriandoPaciente, GetPaciente, GetPacienteByID, SetPacienteByID, DeletePaciente } from "../controllers/PacienteControllers";
-import { PostcriandoHistorico } from "../controllers/HistoricoControllers";
+import { PostcriandoHistorico, GetHistoricoByID } from "../controllers/HistoricoControllers";
 import { PostcriandoMedicacao, GetMedicacaoByID } from "../controllers/MedicacaoControllers";
 import { PostcriandoObservacoes, GetObservacoesByID } from "../controllers/ObservacoesControllers";
+import { BuscarTodosByID } from "../controllers/BuscarControllers";
 const router = Express.Router();
 
 //Rotas para o Paciente
@@ -23,9 +24,11 @@ router.get('/:id/buscar_observacao', GetObservacoesByID);
 
 //Rotas para Historico Medico
 router.post('/:id/criar_historico', PostcriandoHistorico);
+router.get('/:id/buscar_historico', GetHistoricoByID);
 
 //Rota para Buscar o prontuario todo do paciente
-router.get('/:id/buscar',)
+router.get('/:id/buscar', BuscarTodosByID);
+
 
 // rotas das paginas dos formularios
 router.get('/info_pessoais_paciente', GetpaginaFormulario);

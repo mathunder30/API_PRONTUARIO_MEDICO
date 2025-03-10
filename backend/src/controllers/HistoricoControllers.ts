@@ -19,3 +19,17 @@ export const PostcriandoHistorico = async(req: Request, res: Response) => {
 
     }
 }
+export const GetHistoricoByID = async(req: Request, res: Response) => {
+    const paciente_id = parseInt(req.params.id, 10);
+
+    try {
+        const hist_medico = await Historico.buscarHistoricoByID(Number(paciente_id));
+        if(hist_medico){
+            res.status(200).json({hist_medico});
+        } else {
+            res.status(400).json({message: `Observações medicas para o paciente não encontradas!`});
+        }
+    } catch(error){
+        res.status(500).json({message: `Erro ao inserir obsevações medicas para o paciente ${error}`});
+    }
+}
