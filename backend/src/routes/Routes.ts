@@ -4,6 +4,7 @@ import { PostCriandoPaciente, GetPaciente, GetPacienteByID, SetPacienteByID, Del
 import { PostcriandoHistorico, GetHistoricoByID } from "../controllers/HistoricoControllers";
 import { PostcriandoMedicacao, GetMedicacaoByID } from "../controllers/MedicacaoControllers";
 import { PostcriandoObservacoes, GetObservacoesByID } from "../controllers/ObservacoesControllers";
+import {PostcriandoProcedimentos, GetProcedimentoByID} from "../controllers/ProcedimentoControllers";
 import { BuscarTodosByID } from "../controllers/BuscarControllers";
 const router = Express.Router();
 
@@ -21,6 +22,10 @@ router.get('/:id/buscar_medicamento', GetMedicacaoByID);
 // Rotas para Observações
 router.post ('/:id/criar_observacao', PostcriandoObservacoes);
 router.get('/:id/buscar_observacao', GetObservacoesByID);
+
+// Rotas Para Procedimentos
+router.post ('/:id/criar_procedimento', PostcriandoProcedimentos);
+router.get('/:id/buscar_procedimento', GetProcedimentoByID);
 
 //Rotas para Historico Medico
 router.post('/:id/criar_historico', PostcriandoHistorico);

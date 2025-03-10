@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Procedimentos from "../models/Procedimentos";
 
 
-export const PostcriandoObservacoes = async(req: Request, res: Response) => {
+export const PostcriandoProcedimentos = async(req: Request, res: Response) => {
     const paciente_id = parseInt(req.params.id, 10);
     const{nome_procedimento, data_procedimento,  observacoes_procedimento} = req.body;
     console.log("Recebendo dados do formulário:", req.body);
