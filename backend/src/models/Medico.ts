@@ -22,4 +22,14 @@ export default class Medico {
         return {...medico, id:(rows as msql2.ResultSetHeader).insertId}
 
     };
+
+    static async LoginMedico(email: string): Promise<IMedico | null> {
+        if(!email) return null;
+        console.log(`Buscando o email: ${email}`);
+
+        const [rows] = await promisePool.execute('SELECT * FROM medico WHERE email = ?', [email]);
+
+        const medico = (rows as IMedico[])[0];
+        return medico || null;
+    }
 } 
