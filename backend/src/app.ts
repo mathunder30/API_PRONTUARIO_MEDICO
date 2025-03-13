@@ -1,4 +1,4 @@
-import express, {Request, Response, Router} from 'express';
+import express, {Request, Response} from 'express';
 import { promisePool } from './BancoDados';
 import cors from 'cors';
 import router from './routes/Routes';
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.set('views', path.resolve(__dirname, '..', 'views'));
 app.set('view engine', 'ejs');
-
+// sera que isso vai ser salvo?
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, '..', 'public')))

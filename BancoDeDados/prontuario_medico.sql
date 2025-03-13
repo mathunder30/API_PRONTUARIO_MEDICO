@@ -1,6 +1,18 @@
 CREATE database prontuario_medico;
 
 USE prontuario_medico;
+
+CREATE table if not exists medico (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    crm VARCHAR(20) UNIQUE NOT NULL, 
+    especialidade VARCHAR(50),
+    telefone VARCHAR(20),
+    email VARCHAR(100) UNIQUE,
+    senha varchar(100),
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS paciente (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	nome_paciente VARCHAR(255),
@@ -12,7 +24,8 @@ CREATE TABLE IF NOT EXISTS paciente (
     endereco_paciente varchar(255)
     
     );
-    
+ 
+ 
     
 CREATE TABLE IF NOT EXISTS historico_medico(
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,4 +67,4 @@ create table if not exists procedimentos (
 select * from paciente;
 select * from medicacao;
 select * from observacoes;
-
+select * from medico;
