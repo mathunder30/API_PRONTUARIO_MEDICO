@@ -20,5 +20,6 @@ export default class Medico {
         return {...medico, id:(rows as msql2.ResultSetHeader).insertId}
 
 
+
     }
 }
