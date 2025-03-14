@@ -22,4 +22,10 @@ export default class Medico {
 
 
     }
+
+    static async LoginMedico (email: string): Promise<IMedico | null> {
+        const [rows] = await promisePool.execute('SELECT * FROM medico WHERE email = ?', [email]);
+        const recMedico = (rows as IMedico[])[0];
+        return recMedico || null;
+    }
 }
