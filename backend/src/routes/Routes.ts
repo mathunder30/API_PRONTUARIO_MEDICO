@@ -6,7 +6,6 @@ import { PostcriandoMedicacao, GetMedicacaoByID } from "../controllers/Medicacao
 import { PostcriandoObservacoes, GetObservacoesByID } from "../controllers/ObservacoesControllers";
 import {PostcriandoProcedimentos, GetProcedimentoByID} from "../controllers/ProcedimentoControllers";
 import { BuscarTodosByID } from "../controllers/BuscarControllers";
-import {PostRegisterMedico, PostLoginMedico} from "../controllers/MedicoControllers";
 const router = Express.Router();
 
 //Rotas para o Paciente
@@ -17,8 +16,8 @@ router.put('/atualizar_paciente/:id', SetPacienteByID);
 router.delete('/deletar_paciente/:id', DeletePaciente);
 
 //Rotas para Medico
-router.post('/register_profissional', PostRegisterMedico);
-router.post('/login_profissional', PostLoginMedico)
+/*router.post('/register_profissional', PostRegisterMedico);
+router.post('/login_profissional', PostLoginMedico)*/
 
 // Rotas para o Medicamentos
 router.post ('/:id/criar_medicamento', PostcriandoMedicacao);
