@@ -1,9 +1,10 @@
+
 import express, {Request, Response} from 'express';
 import { promisePool } from './BancoDados';
 import cors from 'cors';
 import router from './routes/Routes';
 import bodyParser from 'body-parser';
-const path = require('path');
+import path from 'path';
 const app = express();
 const port = 3000;
 
