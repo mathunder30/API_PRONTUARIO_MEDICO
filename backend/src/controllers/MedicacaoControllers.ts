@@ -8,8 +8,9 @@ export const PostcriandoMedicacao = async(req: Request, res: Response) => {
 
     try{
 
-        const NovoHistorico = await Medicacao.criandoMedicacao({ paciente_id, medicamentos, instrucoes, dosagem, frequencia });
-        res.status(201).json({message: 'Medicamentos cadastrado com sucesso', medicacao: NovoHistorico});
+        const NovoMedico = await Medicacao.criandoMedicacao({ paciente_id, medicamentos, instrucoes, dosagem, frequencia });
+        res.status(201).json({message: 'Medicamentos cadastrado com sucesso', medicacao: NovoMedico});
+        console.log(`Dados recebidos: ${NovoMedico}`)
 
     } catch (error) {
         console.error(`Erro ao cadastrar os Medicamentos ${error}`);

@@ -2,7 +2,7 @@ import {Request, Response} from 'express';
 import Medico from "../models/Medico";
 import bcrypto from 'bcrypt';
 
-export const PostRegisterMedico = async (res: Response, req: Request) => {
+export const PostRegisterMedico = async (req: Request, res: Response) => {
     const{nome, crm, especialidade, telefone, email, senha, criado_em} = req.body;
     console.log(`Recebendo os dados do Usuario ${req.body}`);
 
@@ -25,7 +25,7 @@ export const PostRegisterMedico = async (res: Response, req: Request) => {
         console.error("Erro ao cadastrar usuário:", error);
         const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
         console.log(`Error: ${error} ${errorMessage}`)
-        res.status(500).json({messaege:`Email ja cadastrado!`});
+        res.status(500).json({messaege:`Erro`});
     }
 
 }
