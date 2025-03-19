@@ -10,13 +10,13 @@ interface IMedico {
     telefone: string,
     email: string,
     senha: string,
-    criado_em: string
+
 }
 
 export default class Medico {
     static async  CadastroMedico (medico: IMedico): Promise<IMedico> {
-        const [rows] = await promisePool.execute('INSERT INTO medico (nome, crm, especialidade, telefone, email, senha, criado_em) VALUES(?, ?, ?, ?, ?, ?, ?)',
-            [medico.nome, medico.crm, medico.especialidade, medico.telefone, medico.email, medico.senha, medico.criado_em]);
+        const [rows] = await promisePool.execute('INSERT INTO medico (nome, crm, especialidade, telefone, email, senha, ) VALUES( ?, ?, ?, ?, ?, ?)',
+            [medico.nome, medico.crm, medico.especialidade, medico.telefone, medico.email, medico.senha]);
         console.log('Usuário inserido: ', rows);
         return {...medico, id:(rows as msql2.ResultSetHeader).insertId};
 
