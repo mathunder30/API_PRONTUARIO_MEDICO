@@ -1,6 +1,7 @@
 import {promisePool} from '../BancoDados';
 import msql2 from 'mysql2';
 
+
 interface IMedico {
     id?: number,
     nome: string,

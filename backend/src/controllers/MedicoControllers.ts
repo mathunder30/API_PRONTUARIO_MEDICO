@@ -1,6 +1,8 @@
 import {Request, Response} from 'express';
 import Medico from "../models/Medico";
 import bcrypto from 'bcrypt';
+import jwt from "jsonwebtoken";
+const SECRET_KEY = process.env.JWT_SECRET || "fallback_secret";
 
 export const PostRegisterMedico = async (req: Request, res: Response) => {
     const{nome, crm, especialidade, telefone, email, senha, criado_em} = req.body;
@@ -28,4 +30,35 @@ export const PostRegisterMedico = async (req: Request, res: Response) => {
         res.status(500).json({messaege:`Erro`});
     }
 
+};
+
+export const PostLoginMedico = async (req: Request, res: Response) => {
+    try {
+        const {email, senha} = req.body;
+
+        if(!email || !senha) {
+            res.status(400).json({message: "Email e senha são obrigatorios"});
+            return;
+        }
+        const medico = await Medico.LoginMedico(email);
+
+        if(!medico) {
+            res.status(404).json({ message: "Usuario não encontrado"});
+            return;
+        }
+
+        console.log( ` Senha armazenada no banco: ${medico.senha}`);
+
+        const senhaCorreta = await bcrypto.compare(senha, medico.senha);
+
+        if (!senhaCorreta) {
+            res.status(403).json({ message: "Senha incorreta"});
+            return;
+
+            const { senha: _, ...medicoSemSenha } = recMedico;
+
+            const token = jwt.sign({ id: recMedico.id, email: recMedico.email }, SECRET_KEY, {expiresIn: "1h"})
+
+        }
+    } catch (errr) {}
 }
