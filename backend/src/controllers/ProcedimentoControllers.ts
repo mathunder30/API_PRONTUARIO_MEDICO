@@ -5,8 +5,6 @@ import Procedimentos from "../models/Procedimentos";
 export const PostcriandoProcedimentos = async(req: Request, res: Response) => {
     const paciente_id = parseInt(req.params.id, 10);
     const{nome_procedimento, data_procedimento,  observacoes_procedimento} = req.body;
-    console.log("Recebendo dados do formulário:", req.body);
-    console.log('Dados recebidos:', {nome_procedimento});
 
     try{
 
@@ -15,7 +13,7 @@ export const PostcriandoProcedimentos = async(req: Request, res: Response) => {
 
     } catch (error) {
         console.error(`Erro ao cadastrar os Procedimentos ${error}`);
-        res.status(500).json({message: `Erro ao cadastrar os Procedimentos ${error}`});
+        res.status(500).json({message: `Erro interno do servidor`});
 
     }
 };
@@ -31,6 +29,7 @@ export const GetProcedimentoByID = async(req: Request, res: Response) => {
             res.status(400).json({message: `Procedimentos medicas para o paciente não encontradas!`});
         }
     } catch(error){
-        res.status(500).json({message: `Erro ao inserir Procedimentos medicas para o paciente ${error}`});
+        console.error("Erro ao buscar procedimentos:", error);
+        res.status(500).json({message: `Erro interno do servidor`});
     }
 }

@@ -13,8 +13,8 @@ export default class Procedimentos {
     static async criandoProcedimento(procedimento: IProcedimentos): Promise<IProcedimentos> {
         const [rows] = await promisePool.execute('INSERT INTO procedimentos ( paciente_id, nome_procedimento, data_procedimento, observacoes_procedimento) VALUES (?, ?, ?, ?)',
             [procedimento.paciente_id, procedimento.nome_procedimento, procedimento.data_procedimento, procedimento.observacoes_procedimento]
-        ); console.log(' ✅ Procedimentos medicos inserido: ', rows);
-                return {...procedimento, id:(rows as msql2.ResultSetHeader).insertId}
+        );
+        return {...procedimento, id:(rows as msql2.ResultSetHeader).insertId}
     };
 
       static async buscarProcedimentoID (paciente_id: number): Promise<IProcedimentos | null> {

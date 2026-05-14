@@ -12,7 +12,6 @@ interface IObservacoes {
 export default class Observacoes{
     static async criandoObservacoes(observacoes: IObservacoes): Promise<IObservacoes> {
         
-        console.log("📌 Dados recebidos para inserção:", observacoes);
         if( !observacoes.observacoes_medicas){
             throw new Error('Campos obrigatórios não inseridos.');
         }
@@ -23,7 +22,6 @@ export default class Observacoes{
             [ observacoes.paciente_id, observacoes.observacoes_medicas, observacoes.data_registro]
         ); 
         
-        console.log(' ✅ Observações do paciente inserido: ', rows);
         return {...observacoes, id:(rows as msql2.ResultSetHeader).insertId}
     }
 

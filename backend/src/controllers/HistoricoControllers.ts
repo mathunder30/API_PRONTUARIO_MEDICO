@@ -1,12 +1,9 @@
 import { Request, Response } from "express";
-import Historico_med from '../models/Historico';
 import Historico from "../models/Historico";
 
 export const PostcriandoHistorico = async(req: Request, res: Response) => {
     const paciente_id = parseInt(req.params.id, 10);
     const{motivo_consulta, diagnostico, sintomas} = req.body;
-    console.log("Recebendo dados do formulário:", req.body);
-    console.log('Dados recebidos:', {motivo_consulta, diagnostico, sintomas});
 
     try{
 
@@ -15,7 +12,7 @@ export const PostcriandoHistorico = async(req: Request, res: Response) => {
 
     } catch (error) {
         console.error(`Erro ao cadstrar o historico ${error}`);
-        res.status(500).json({message: `Erro ao cadastrar o historico ${error}`});
+        res.status(500).json({message: `Erro interno do servidor`});
 
     }
 }
@@ -30,6 +27,7 @@ export const GetHistoricoByID = async(req: Request, res: Response) => {
             res.status(400).json({message: `Observações medicas para o paciente não encontradas!`});
         }
     } catch(error){
-        res.status(500).json({message: `Erro ao inserir obsevações medicas para o paciente ${error}`});
+        console.error("Erro ao buscar historico:", error);
+        res.status(500).json({message: `Erro interno do servidor`});
     }
 }

@@ -12,7 +12,6 @@ interface IHistorico {
 export default class Historico{
     static async criandoHistorico(historico: IHistorico): Promise<IHistorico> {
         
-        console.log("📌 Dados recebidos para inserção:", historico);
         if( !historico.motivo_consulta || !historico.diagnostico || !historico.sintomas){
             throw new Error('Campos obrigatórios não inseridos.');
         }
@@ -20,7 +19,7 @@ export default class Historico{
             
             'INSERT INTO historico_medico ( paciente_id, motivo_consulta, diagnostico, sintomas) VALUES (?, ?, ?, ?)',
             [historico.paciente_id, historico.motivo_consulta, historico.diagnostico, historico.sintomas]
-        ); console.log(' ✅ Historico medico inserido: ', rows);
+        );
         return {...historico, id:(rows as msql2.ResultSetHeader).insertId}
     }
 

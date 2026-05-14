@@ -1,15 +1,21 @@
 import mysql from 'mysql2';
-import dontenv from 'dotenv';
+import { getRequiredEnv } from './config/Env';
 
-dontenv.config();
+const dbPort = Number(getRequiredEnv('DB_PORT'));
+
+if (Number.isNaN(dbPort)) {
+    throw new Error('Variavel de ambiente DB_PORT deve ser um numero');
+}
 
 const pool = mysql.createPool({
-    host: '127.0.0.1',
-    port: 3306,
-    user: 'root',
-    password: 'aluno',
-    database: 'prontuario_medico',
-
+    host: getRequiredEnv('DB_HOST'),
+    port: dbPort,
+    user: getRequiredEnv('DB_USER'),
+    password: getRequiredEnv('DB_PASSWORD'),
+    database: getRequiredEnv('DB_NAME'),
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
 });
 
 const promisePool = pool.promise();

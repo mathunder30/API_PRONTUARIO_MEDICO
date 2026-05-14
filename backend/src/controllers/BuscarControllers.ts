@@ -37,6 +37,7 @@ export const BuscarTodosByID = async (req: Request, res: Response) => {
             res.status(400).json({message: `Nenhum foi encontrado`});
         }
     }catch(error){
-        res.status(500).json({message: `Erro ao inserir obsevações medicas para o paciente ${error}`});
+        console.error("Erro ao buscar prontuario completo:", error);
+        res.status(500).json({message: `Erro interno do servidor`});
     }
 }

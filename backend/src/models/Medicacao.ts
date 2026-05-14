@@ -13,7 +13,6 @@ interface IMedicacao {
 export default class Medicacao{
     static async criandoMedicacao(medicacao: IMedicacao): Promise<IMedicacao> {
         
-        console.log("📌 Dados recebidos para inserção:", medicacao);
         if( !medicacao.medicamentos || !medicacao.instrucoes){
             throw new Error('Campos obrigatórios não inseridos.');
         }
@@ -21,7 +20,7 @@ export default class Medicacao{
             
             'INSERT INTO medicacao ( paciente_id, medicamentos, instrucoes, dosagem, frequencia) VALUES (?, ?, ?, ?, ?)',
             [medicacao.paciente_id, medicacao.medicamentos, medicacao.instrucoes, medicacao.dosagem, medicacao.frequencia ]
-        ); console.log(' ✅ Historico medico inserido: ', rows);
+        );
         return {...medicacao, id:(rows as msql2.ResultSetHeader).insertId}
     }
 

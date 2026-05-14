@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
 import {Request, Response, NextFunction} from "express";
-import {decode} from "node:punycode";
+import { getRequiredEnv } from "../config/Env";
 
-const SECRET_KEY = process.env.JWT_SECRET || 'fallback_secret';
+const SECRET_KEY = getRequiredEnv("JWT_SECRET");
 
 export  const VerificarToken = (req: Request, res: Response, next: NextFunction) => {
-    const token = req.header("Authorization")?.replace("Bearer", "");
+    const token = req.header("Authorization")?.replace(/^Bearer\s+/i, "");
 
     if(!token) {
         res.status(401).json({message: 'Acesso negado. Token não fornecido'});
